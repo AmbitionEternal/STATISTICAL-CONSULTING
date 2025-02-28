@@ -1,0 +1,44 @@
+---
+title: "HW1"
+subtitle: "STATISTICAL CONSULTING"
+date: today
+author: Jhih-Heng Chen
+format:
+ pdf:
+    include-in-header:
+      - text: |
+         \usepackage{setspace,relsize}
+         \usepackage{geometry}
+         \geometry{verbose,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
+#mainfont: "Microsoft JhengHei UI"
+#mainfont: "Microsoft JhengHei"
+mainfont: "Microsoft JhengHei Bold"
+toc: false ###目錄頁
+lang: zh-Tw
+documentclass: article
+pdf-engine: xelatex
+execute:
+  tidy: true
+  echo: true
+  warning: false
+  message: false
+---
+
+## 經由分析鐵達尼號乘客的資料，我們可以觀察到以下幾點統計結果。本次航行共有891名乘客，其中男性約占 64.8%，女性約占 35.2%。乘客的艙等分佈顯示，三等艙(55.1%)的乘客最多，再來是一等艙（24.2%）與二等艙（20.7%）。然而在年齡分佈方面，乘客年齡從不到 1 歲至 80 歲不等，但有177名乘客(19.9%)的年齡資料缺失。已知年齡的乘客中，75%的年齡在38歲以下，平均年齡約為29.7歲，顯示多數乘客為年輕族群。進一步觀察家庭同行情況，68.2%的乘客沒有同行的兄弟姐妹或配偶，而76.1%的乘客沒有同行的父母或子女，顯示許多乘客是獨自搭乘這艘船的。在票價部分，此次航行的平均票價為 32.2元，但票價分佈不均，其中 中位數為14.45元，表示票價受艙等與登船地點影響較大。最後可以觀察到乘客來自不同的登船港口，其中644人(72.4%)從S港口登船，168人(18.9%)從C港口登船，77人（8.7%)從Q港口登船。並根據生還情況的統計，本次航行共有 342名乘客存活，生存率約為38.4%，由此可知此次船難對乘客造成極大的影響。
+
+```{r}
+#| results: asis
+library(Hmisc)
+library(reticulate)
+
+file_path <- "C:/Users/陳志恆/Desktop/碩班/統諮/titanic.csv"
+titanic <- read.csv(file_path, stringsAsFactors = FALSE)
+summary <- describe(titanic)
+latex(summary, file = "")
+
+
+```
+
+
+
+
